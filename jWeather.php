@@ -1,5 +1,13 @@
 <?php
 
+/**
+ * 
+ * @name:Simple DLE Weather
+ * @author: jtiq
+ * @date: 15-08-2013
+ * 
+**/
+
 Class jWeather {
   private $cache = 7200;
 
@@ -11,6 +19,7 @@ Class jWeather {
       $i = 'image-v3';
 
       return array(
+        'name' => $xml->attributes()->city,
         'temp' => $xml->fact->temperature,
         'image' => "http://yandex.st/weather/1.1.76.1/i/icons/30x30/".$xml->fact->$i.".png",
         'time' => (time() + mt_rand(-30, 30))
