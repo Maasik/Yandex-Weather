@@ -12,7 +12,7 @@ Class jWeather {
   private $cache = 7200;
 
   public function load($code) {
-    $data = @file_get_contents("http://export.yandex.ru/weather-ng/forecasts/$code.xml");
+    $data = @file_get_contents("http://export.yandex.ru/weather-ng/forecasts/$code.xml", 0, @stream_context_create(array('http' => array('timeout' => 2))));
 
     if (!is_null($data) && strlen($data)) {
       $xml = @simplexml_load_string($data);
